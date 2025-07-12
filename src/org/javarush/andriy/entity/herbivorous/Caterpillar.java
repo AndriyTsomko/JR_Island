@@ -1,6 +1,7 @@
 package org.javarush.andriy.entity.herbivorous;
 
-import deserted_Island_test.animals.Herbivorous;
+
+import org.javarush.andriy.abstraction.entity.Herbivorous;
 
 public class Caterpillar extends Herbivorous {
     public Caterpillar() {
