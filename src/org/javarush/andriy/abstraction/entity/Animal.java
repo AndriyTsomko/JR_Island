@@ -1,5 +1,4 @@
 package org.javarush.andriy.abstraction.entity;
-import org.javarush.andriy.RandomBoolean;
 import org.javarush.andriy.map.Location;
 
 import java.util.Random;
@@ -22,15 +21,14 @@ public abstract class Animal {
 
     public void move(Location[][] map){
         Random random = new Random();
-        RandomBoolean randomBoolean = new RandomBoolean();
         int moveSpeed = random.nextInt(this.getMoveSpeed() + 1);
 
         for (int i = 0; i < moveSpeed; i++){
             int x = currentLocation.getX();
             int y = currentLocation.getY();
 
-            boolean moveX = randomBoolean.getFiftyFifty();
-            boolean add = randomBoolean.getFiftyFifty();
+            boolean moveX = random.nextBoolean();
+            boolean add = random.nextBoolean();
 
             int newX = x;
             int newY = y;
