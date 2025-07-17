@@ -1,6 +1,6 @@
 package org.javarush.andriy.entity.predators;
-
 import org.javarush.andriy.abstraction.entity.Predator;
+import org.javarush.andriy.map.Location;
 
 public class Wolf extends Predator {
     public Wolf() {
@@ -13,8 +13,8 @@ public class Wolf extends Predator {
     }
 
     @Override
-    public void move() {
-
+    public void move(Location[][] map) {
+        super.move(map);
     }
 
     @Override

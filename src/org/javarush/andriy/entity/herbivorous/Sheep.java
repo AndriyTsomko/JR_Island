@@ -1,6 +1,7 @@
 package org.javarush.andriy.entity.herbivorous;
 
 import org.javarush.andriy.abstraction.entity.Herbivorous;
+import org.javarush.andriy.map.Location;
 
 public class Sheep extends Herbivorous {
     public Sheep() {
@@ -13,8 +14,8 @@ public class Sheep extends Herbivorous {
     }
 
     @Override
-    public void move() {
-
+    public void move(Location[][] map) {
+        super.move(map);
     }
 
     @Override
