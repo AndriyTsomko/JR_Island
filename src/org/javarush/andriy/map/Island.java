@@ -5,9 +5,9 @@ public class Island {
 
     public Island(int height, int wight) {
         this.worldMap = new Location[height][wight];
-        for (int i = 0; i < worldMap.length; i++) {
-            for (int j = 0; j < worldMap[0].length; j++) {
-                worldMap[i][j] = new Location();
+        for (int i = 0; i < worldMap.length; i++){
+            for (int j = 0; j < worldMap[i].length; j++){
+                worldMap[i][j] = new Location(i, j);
             }
         }
     }
