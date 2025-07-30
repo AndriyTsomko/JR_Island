@@ -4,11 +4,13 @@ import org.javarush.andriy.abstraction.entity.Animal;
 import org.javarush.andriy.abstraction.entity.Plant;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Location {
-    private final List<Animal> animals = new ArrayList<>();
-    private final List<Plant> plants = new ArrayList<>();
+    private final List<Animal> animals = Collections.synchronizedList(new ArrayList<>());
+    private final List<Plant> plants = Collections.synchronizedList(new ArrayList<>());
     private final int x;
     private final int y;
 
@@ -17,21 +19,40 @@ public class Location {
         this.x = x;
     }
 
-    public synchronized void addAnimals(Animal animal){
-        animals.add(animal);
-        animal.setCurrentLocation(this);
+    public synchronized void growPlants() {
+        int countOfPlants = plants.size();
+        if (countOfPlants < Plant.maxNumOfSpecies) {
+            int toGrow = ThreadLocalRandom.current().nextInt(3); // до 2 рослин
+            for (int i = 0; i < toGrow && plants.size() < Plant.maxNumOfSpecies; i++) {
+                addPlants(new Plant());
+            }
+        }
     }
 
-    public synchronized void addPlants(Plant plant){
-        plants.add(plant);
+    public synchronized void addAnimals(Animal animal) {
+        if (!animals.contains(animal)) {
+            animals.add(animal);
+            animal.setCurrentLocation(this);
+        }
     }
 
-    public synchronized void removeAnimals(Animal animal){
-        animals.remove(animal);
+    public synchronized void addPlants(Plant plant) {
+        if (!plants.contains(plant)) {
+            plants.add(plant);
+        }
     }
 
-    public synchronized void removePlants(Plant plant){
-        plants.remove(plant);
+    public synchronized void removeAnimals(Animal animal) {
+        if (animals.contains(animal)) {
+            animals.remove(animal);
+            animal.setCurrentLocation(null);
+        }
+    }
+
+    public synchronized void removePlants(Plant plant) {
+        if (plants.contains(plant)) {
+            plants.remove(plant);
+        }
     }
 
     public List<Animal> getAnimals() {
@@ -45,6 +66,7 @@ public class Location {
     public int getX() {
         return x;
     }
+
     public int getY() {
         return y;
     }
