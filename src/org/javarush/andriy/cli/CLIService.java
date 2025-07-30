@@ -14,8 +14,8 @@ public class CLIService {
         return console.nextInt();
     }
 
-    public int enterWeight(){
-        System.out.println("Enter island weight: ");
+    public int enterWidth(){
+        System.out.println("Enter island width: ");
         return console.nextInt();
     }
 }

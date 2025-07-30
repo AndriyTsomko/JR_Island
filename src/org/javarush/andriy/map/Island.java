@@ -1,5 +1,8 @@
 package org.javarush.andriy.map;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Island {
     private Location[][] worldMap;
 
@@ -12,6 +15,9 @@ public class Island {
         }
     }
 
+    public List<Location> getAllLocations(){
+        return Arrays.stream(worldMap).flatMap(Arrays::stream).toList();
+    }
     public Location[][] getWorldMap() {
         return worldMap;
     }
