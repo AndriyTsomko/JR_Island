@@ -49,7 +49,7 @@ public class IslandRunner {
             PopulationPrinter.print(island);
 
             try {
-                Thread.sleep(1);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
