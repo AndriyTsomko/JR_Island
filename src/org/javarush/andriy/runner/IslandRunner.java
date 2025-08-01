@@ -34,7 +34,6 @@ public class IslandRunner {
                 tasks.add(() -> {
                     for (Animal animal : new ArrayList<>(location.getAnimals())) {
                         animal.activity(island.getWorldMap());
-                        location.growPlants();
                     }
                     return null;
                 });
@@ -45,11 +44,12 @@ public class IslandRunner {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            island.growPlants();
 
             PopulationPrinter.print(island);
 
             try {
-                Thread.sleep(1000);
+                Thread.sleep(1);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }

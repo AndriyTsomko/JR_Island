@@ -22,7 +22,7 @@ public class Location {
     public synchronized void growPlants() {
         int countOfPlants = plants.size();
         if (countOfPlants < Plant.maxNumOfSpecies) {
-            int toGrow = ThreadLocalRandom.current().nextInt(2);
+            int toGrow = ThreadLocalRandom.current().nextInt(3);
             for (int i = 0; i < toGrow && plants.size() < Plant.maxNumOfSpecies; i++) {
                 addPlants(new Plant());
             }

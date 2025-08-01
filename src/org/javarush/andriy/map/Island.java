@@ -15,6 +15,14 @@ public class Island {
         }
     }
 
+    public void growPlants() {
+        for (Location[] row : worldMap) {
+            for (Location location : row) {
+                location.growPlants();
+            }
+        }
+    }
+
     public List<Location> getAllLocations(){
         return Arrays.stream(worldMap).flatMap(Arrays::stream).toList();
     }
